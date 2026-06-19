@@ -1,46 +1,123 @@
-# 🚚 Tata Supply Chain CO LTD - DBMS Project
+# Tata Supply Chain CO LTD – Supply Chain Management Database System
 
-## 📌 Project Overview
+A comprehensive Database Management System (DBMS) developed to streamline and automate the core supply chain operations of Tata Supply Chain CO LTD. The system manages procurement, inventory, vendor relationships, transportation, quality inspection, and material issuance through a structured and normalized relational database.
 
-This project presents a Database Management System (DBMS) designed for Tata Supply Chain CO LTD to efficiently manage procurement, inventory, vendor operations, quality inspection, and material issuance processes. The system helps organize and track the flow of materials from suppliers to production while maintaining accurate records and improving operational efficiency.
+---
 
-## 🎯 Objectives
+## Project Overview
 
-* Manage raw materials and finished parts inventory
-* Maintain vendor and supplier information
-* Track purchase orders and delivery challans
-* Generate Goods Received Reports (GRR)
-* Record quality inspection results
-* Manage Material Issue Requisitions (MIR)
-* Improve inventory monitoring and reporting
+Efficient supply chain management is critical for large industrial organizations. This project provides a centralized database solution that enables the organization to track materials from procurement to production while maintaining data accuracy, consistency, and operational transparency.
 
-## 🛠️ Technologies Used
+The system captures and manages information related to:
 
-* MySQL
-* MySQL Workbench
-* Draw.io (ER Diagram)
-* GitHub
+* Raw Materials and Finished Parts
+* Vendor & Supplier Management
+* Purchase Orders
+* Transporters & Delivery Challans
+* Goods Received Reports (GRR)
+* Quality Inspection & Testing
+* Material Issue Requisitions (MIR)
+* Inventory Monitoring & Control
 
-## 📂 Modules
+The database is designed using industry-standard relational modeling principles and normalized up to Third Normal Form (3NF) to eliminate redundancy and ensure data integrity.
 
-* Part & Inventory Management
-* Vendor Management
-* Purchase Order Management
-* Transporter & Challan Tracking
-* GRR Management
-* Quality Inspection
-* Material Issue Requisition (MIR)
+---
 
-## 📊 Project Deliverables
+## Project Objectives
 
-* ER Diagram
-* Normalized Database Design (3NF)
-* SQL Table Creation Scripts
-* Sample Data
-* SQL Queries and Reports
+* Maintain accurate inventory records
+* Manage vendor and supplier information efficiently
+* Track procurement and purchase order activities
+* Monitor transportation and delivery operations
+* Record material receipt and quality inspection results
+* Manage material issuance for production activities
+* Generate meaningful reports for operational decision-making
+* Ensure data consistency through normalization and relational integrity
 
-## 👨‍💻 Author
+---
+
+## Database Design
+
+The database consists of the following core entities:
+
+* Part Category
+* Parts
+* Vendors
+* Vendor Parts
+* Purchase Orders
+* Transporters
+* Challans
+* Goods Received Reports (GRR)
+* Quality Tests
+* Material Issue Requisitions (MIR)
+
+### Key Relationships
+
+* One Category → Many Parts
+* One Vendor → Many Purchase Orders
+* One Vendor → Many Vendor-Part Mappings
+* One Part → Many Vendor-Part Mappings
+* One Purchase Order → Many Challans
+* One Transporter → Many Challans
+* One Challan → One GRR
+* One GRR → One Quality Test
+* One Part → Many MIR Records
+
+---
+
+## Normalization
+
+The database schema has been normalized up to **Third Normal Form (3NF)**.
+
+### First Normal Form (1NF)
+
+* Atomic attributes
+* No repeating groups
+
+### Second Normal Form (2NF)
+
+* Full functional dependency on primary keys
+* No partial dependencies
+
+### Third Normal Form (3NF)
+
+* No transitive dependencies
+* Reduced redundancy and improved consistency
+
+  
+## 📈 Features Implemented
+
+✔ Inventory Management
+✔ Vendor Management
+✔ Purchase Order Tracking
+✔ Transportation Management
+✔ Challan Processing
+✔ Goods Receipt Tracking (GRR)
+✔ Quality Inspection Management
+✔ Material Issue Requisition (MIR)
+✔ Inventory & Procurement Reporting
+✔ Relational Database Design (3NF)
+---
+## Sample Reports
+
+The project includes SQL queries for:
+
+* Vendor-wise Part Supply Report
+* Purchase Order Report
+* Transporter Delivery Report
+* Inventory Monitoring Report
+* Quality Inspection Report
+* Material Issue Report
+* End-to-End Supply Chain Tracking Report
+
+---
+
+## Author
 
 **Ashutosh Tripathi**
-B.Tech Information Technology
-Vidyalankar Institute of Technology
+
+B.Tech – Information Technology
+
+Vidyalankar Institute of Technology (VIT)
+
+*"Designing efficient databases for efficient supply chains."*
