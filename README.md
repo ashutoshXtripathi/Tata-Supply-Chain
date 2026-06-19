@@ -88,15 +88,25 @@ The database schema has been normalized up to **Third Normal Form (3NF)**.
 ## Features Implemented
 
 Inventory Management
+
 Vendor Management
+
 Purchase Order Tracking
+
 Transportation Management
+
 Challan Processing
+
 Goods Receipt Tracking (GRR)
+
 Quality Inspection Management
+
 Material Issue Requisition (MIR)
+
 Inventory & Procurement Reporting
+
 Relational Database Design (3NF)
+
 ---
 ## Sample Reports
 
