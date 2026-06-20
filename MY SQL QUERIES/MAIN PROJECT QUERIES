@@ -1,0 +1,71 @@
+-- Parts with Category
+SELECT p.part_no,p.description,pc.category_name
+FROM parts p
+JOIN part_category pc
+ON p.category_id=pc.category_id;
+
+-- Vendor Wise Parts
+SELECT v.vendor_name,p.part_no,p.description
+FROM vendors v
+JOIN vendor_parts vp
+ON v.vendor_id=vp.vendor_id
+JOIN parts p
+ON p.part_id=vp.part_id;
+
+-- Low Stock Report
+SELECT *
+FROM parts
+WHERE opening_stock < minimum_stock;
+
+-- Purchase Orders with Vendors
+SELECT po.po_id,po.po_date,v.vendor_name
+FROM purchase_orders po
+JOIN vendors v
+ON po.vendor_id=v.vendor_id;
+
+-- Challan Report
+SELECT c.challan_id,c.challan_date,t.transporter_name
+FROM challans c
+JOIN transporters t
+ON c.transporter_id=t.transporter_id;
+
+-- Accepted Material
+SELECT *
+FROM quality_test
+WHERE status='Accepted';
+
+-- Rejected Material
+SELECT *
+FROM quality_test
+WHERE status='Rejected';
+
+-- Material Issue Report
+SELECT m.mir_id,p.part_no,m.qty_issued
+FROM mir m
+JOIN parts p
+ON m.part_id=p.part_id;
+
+-- Transporter Deliveries
+SELECT t.transporter_name,
+COUNT(c.challan_id) AS deliveries
+FROM transporters t
+LEFT JOIN challans c
+ON t.transporter_id=c.transporter_id
+GROUP BY t.transporter_name;
+
+-- Complete Supply Chain Report
+SELECT
+v.vendor_name,
+po.po_id,
+c.challan_id,
+g.grr_id,
+qt.status
+FROM vendors v
+JOIN purchase_orders po
+ON v.vendor_id=po.vendor_id
+JOIN challans c
+ON po.po_id=c.po_id
+JOIN grr g
+ON c.challan_id=g.challan_id
+JOIN quality_test qt
+ON g.grr_id=qt.grr_id;
