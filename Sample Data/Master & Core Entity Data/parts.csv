@@ -1,0 +1,6 @@
+﻿part_id,category_id,part_no,description,unit_measure,unit_rate,opening_stock,minimum_stock,order_quantity
+101,1,RM001,Steel Rod,Kg,120,500,100,200
+102,1,RM002,Copper Wire,Kg,450,300,50,100
+103,1,RM003,Aluminium Sheet,Sheet,700,150,30,50
+104,1,RM004,Plastic Granules,Kg,80,600,100,250
+105,1,RM005,Rubber Gasket,Piece,25,1000,200,500
