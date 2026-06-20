@@ -1,1 +1,89 @@
+CREATE TABLE part_category (
+    category_id INT PRIMARY KEY,
+    category_name VARCHAR(50) NOT NULL
+);
 
+CREATE TABLE parts (
+    part_id INT PRIMARY KEY,
+    category_id INT,
+    part_no VARCHAR(20) UNIQUE,
+    description VARCHAR(100),
+    unit_measure VARCHAR(20),
+    unit_rate DECIMAL(10,2),
+    opening_stock INT,
+    minimum_stock INT,
+    order_quantity INT,
+    FOREIGN KEY (category_id)
+    REFERENCES part_category(category_id)
+);
+
+CREATE TABLE vendors (
+    vendor_id INT PRIMARY KEY,
+    vendor_name VARCHAR(100),
+    address VARCHAR(200),
+    payment_terms VARCHAR(100)
+);
+
+CREATE TABLE vendor_parts (
+    vendor_part_id INT PRIMARY KEY,
+    vendor_id INT,
+    part_id INT,
+    supply_rate DECIMAL(10,2),
+    FOREIGN KEY (vendor_id)
+    REFERENCES vendors(vendor_id),
+    FOREIGN KEY (part_id)
+    REFERENCES parts(part_id)
+);
+
+CREATE TABLE purchase_orders (
+    po_id INT PRIMARY KEY,
+    vendor_id INT,
+    po_date DATE,
+    FOREIGN KEY (vendor_id)
+    REFERENCES vendors(vendor_id)
+);
+
+CREATE TABLE transporters (
+    transporter_id INT PRIMARY KEY,
+    transporter_name VARCHAR(100),
+    contact_no VARCHAR(15)
+);
+
+CREATE TABLE challans (
+    challan_id INT PRIMARY KEY,
+    po_id INT,
+    transporter_id INT,
+    challan_date DATE,
+    FOREIGN KEY (po_id)
+    REFERENCES purchase_orders(po_id),
+    FOREIGN KEY (transporter_id)
+    REFERENCES transporters(transporter_id)
+);
+
+CREATE TABLE grr (
+    grr_id INT PRIMARY KEY,
+    challan_id INT,
+    grr_date DATE,
+    remarks VARCHAR(200),
+    FOREIGN KEY (challan_id)
+    REFERENCES challans(challan_id)
+);
+
+CREATE TABLE quality_test (
+    test_id INT PRIMARY KEY,
+    grr_id INT,
+    accepted_qty INT,
+    rejected_qty INT,
+    status VARCHAR(20),
+    FOREIGN KEY (grr_id)
+    REFERENCES grr(grr_id)
+);
+
+CREATE TABLE mir (
+    mir_id INT PRIMARY KEY,
+    part_id INT,
+    issue_date DATE,
+    qty_issued INT,
+    FOREIGN KEY (part_id)
+    REFERENCES parts(part_id)
+);
