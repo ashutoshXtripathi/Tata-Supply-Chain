@@ -1,0 +1,6 @@
+﻿test_id,grr_id,accepted_qty,rejected_qty,status
+1,7001,95,5,Accepted
+2,7002,90,10,Accepted
+3,7003,85,15,Rejected
+4,7004,98,2,Accepted
+5,7005,92,8,Accepted
